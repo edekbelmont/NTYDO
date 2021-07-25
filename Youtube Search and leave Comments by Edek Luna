@@ -1,0 +1,77 @@
+package autoyoutube;
+
+import java.util.concurrent.TimeUnit;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+//import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.JavascriptExecutor;
+
+public class Youtube {
+	WebDriver driver;
+	String  baseURL;
+
+	@Before
+	public void setUp() throws Exception 
+	{
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dextr\\OneDrive\\Documentos\\SELENIUM\\webdriver\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get("https://www.youtube.com");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+
+	}
+
+	@Test
+	public void test() throws InterruptedException {
+		driver.findElement(By.xpath("/html/body/ytd-app/div/div/ytd-masthead/div[3]/div[3]/div[2]/ytd-button-renderer/a/tp-yt-paper-button")).click();
+		System.out.println("Clicked on login");
+		driver.findElement(By.className("/html/body/ytd-app/div/div/ytd-masthead/div[3]/div[3]/div[2]/ytd-button-renderer/a/tp-yt-paper-button")).click();
+		System.out.println("Clicked on login");
+		driver.findElement(By.linkText("Acceder")).click();
+		System.out.println("Clicked on login by text selector");
+		driver.findElement(By.partialLinkText("/html/body/ytd-app/div/div/ytd-masthead/div[3]/div[3]/div[2]/ytd-button-renderer/a/tp-yt-paper-button")).click();
+		System.out.println("Clicked on login by partial link text");
+		driver.findElement(By.id("identifierId")).sendKeys("email@email.com");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"identifierNext\"]/div/button")).click();
+		Thread.sleep(3000);
+		System.out.println("Clicked on continue");
+		driver.findElement(By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input")).sendKeys("password");
+		driver.findElement(By.xpath("//*[@id=\"passwordNext\"]/div/button/span")).click();
+		Thread.sleep(3000);
+		System.out.println("Login complete");
+		driver.findElement(By.id("search")).sendKeys("picadura de la cobra gay");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"search-icon-legacy\"]")).click();
+		Thread.sleep(3000);
+		System.out.println("Search complete");
+		driver.findElement(By.xpath("//*[@id=\"video-title\"]/yt-formatted-string")).click();
+		Thread.sleep(3000);
+		System.out.println("picadura de la cobra gay");
+		Thread.sleep(3000);
+		((JavascriptExecutor)driver).executeScript("scroll(0,500)");
+		System.out.println("Scroll down");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/ytd-comments/ytd-item-section-renderer/div[1]/ytd-comments-header-renderer/div[5]/ytd-comment-simplebox-renderer/div[1]")).click();
+		Thread.sleep(3000);
+		System.out.println("click on comment text box");
+		driver.findElement(By.id("contenteditable-root")).sendKeys("excelente rola");
+		System.out.println("click on post or comment");
+		driver.findElement(By.xpath("/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/ytd-comments/ytd-item-section-renderer/div[1]/ytd-comments-header-renderer/div[5]/ytd-comment-simplebox-renderer/div[3]/ytd-comment-dialog-renderer/ytd-commentbox/div/div[4]/div[5]/ytd-button-renderer[2]/a/tp-yt-paper-button")).click();
+		System.out.println("Post Comment successful");
+		Thread.sleep(4000);
+		driver.quit();
+	}
+	
+	@After
+	public void tearDown() throws Exception 
+	{
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+	}
+}
