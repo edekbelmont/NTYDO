@@ -1,0 +1,114 @@
+package instagram_test;
+//This Code are from Edek Luna
+import java.util.concurrent.TimeUnit;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class instagram {
+	WebDriver driver;
+	String  baseURL;
+
+	@Before
+	public void setUp() throws Exception 
+	{
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dextr\\OneDrive\\Documentos\\SELENIUM\\webdriver\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get("https://www.instagram.com");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+
+	}
+	@Test
+	public void test() throws InterruptedException {
+		driver.get("https://www.instagram.com");
+		driver.findElement(By.name("username")).sendKeys("EMAIL@EMAIL.com");
+		System.out.println("Set username");
+		Thread.sleep(3000);
+		driver.findElement(By.name("password")).sendKeys("PASSWORD");
+		Thread.sleep(3000);
+		System.out.println("Set Password");
+		driver.findElement(By.xpath("/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[3]/button")).click();
+		Thread.sleep(3000);
+		System.out.println("Inicia sesión");
+		driver.findElement(By.xpath("/html/body/div[1]/section/main/div/div/div/section/div/button")).click();
+		Thread.sleep(3000);
+		System.out.println("continuar");
+		driver.findElement(By.xpath("/html/body/div[4]/div/div/div/div[3]/button[2]")).click();
+		Thread.sleep(4000);
+		System.out.println("cierra pop up");
+		driver.findElement(By.xpath("//*[@id=\"react-root\"]/section/nav/div[2]/div/div/div[2]/div[1]")).click();
+		Thread.sleep(4000);
+		System.out.println("click en search");
+		driver.findElement(By.xpath("//*[@id=\"react-root\"]/section/nav/div[2]/div/div/div[2]/input")).sendKeys("user1");
+		Thread.sleep(3000);
+		System.out.println("busca perfil");
+		driver.findElement(By.xpath("//*[@id=\"react-root\"]/section/nav/div[2]/div/div/div[2]/div[3]/div/div[2]/div/div[1]/a/div")).click();
+		Thread.sleep(3000);
+		System.out.println("Slecciona perfil perfil");
+		driver.findElement(By.xpath("/html/body/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[1]/button")).click();
+		Thread.sleep(3000);
+		System.out.println("Abre messenger instagram");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea")).click();
+		Thread.sleep(3000);
+		System.out.println("listo para escribir mensaje");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea")).sendKeys("hola mamasito");
+		Thread.sleep(3000);
+		System.out.println("escribe mensaje");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[3]/button")).click();
+		Thread.sleep(3000);
+		System.out.println("envia mensaje bot");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea")).sendKeys("Soy un bot sexual muy cachondo");
+		Thread.sleep(3000);
+		System.out.println("escribe mensaje2");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[3]/button")).click();
+		Thread.sleep(3000);
+		System.out.println("envia mensaje bot2");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea")).sendKeys("me encanta chupar patas");
+		Thread.sleep(3000);
+		System.out.println("escribe mensaje3");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[3]/button")).click();
+		Thread.sleep(3000);
+		System.out.println("envia mensaje bot3");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[1]/div/div[2]/div[1]")).click();
+		Thread.sleep(3000);
+		System.out.println("busca segundo perfil");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[1]/div/div[2]/input")).sendKeys("user2");
+		Thread.sleep(3000);
+		System.out.println("busca a user2");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[1]/div/div[2]/div[3]/div/div[2]/div/div/a/div/div[2]/div[1]/div/div")).click();
+		Thread.sleep(3000);
+		System.out.println("da click a user2");
+		driver.findElement(By.xpath("/html/body/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[1]/button")).click();
+		Thread.sleep(3000);
+		System.out.println("prepara mensaje a dest2");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea")).click();
+		Thread.sleep(3000);
+		System.out.println("click en mensaje a dest2");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea")).sendKeys("Hola guapo");
+		Thread.sleep(3000);
+		System.out.println("escribe mensaje a dest");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[3]/button")).click();
+		Thread.sleep(3000);
+		System.out.println("envia en mensaje a dest2");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea")).sendKeys("Soy un bot sexual destrampado");
+		Thread.sleep(3000);
+		System.out.println("escribe mensaje a dest2");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[3]/button")).click();
+		Thread.sleep(3000);
+		System.out.println("envia en mensaje a dest2_2");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea")).sendKeys("me mama chupar patas y lamer anos");
+		Thread.sleep(3000);
+		System.out.println("escribe mensaje a dest2");
+		driver.findElement(By.xpath("/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[3]/button")).click();
+		Thread.sleep(3000);
+		System.out.println("envia en mensaje a dest2_2");
+		Thread.sleep(8000);
+		driver.quit();
+	}
+}
+
+	
