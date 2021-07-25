@@ -1,0 +1,80 @@
+package no_me_abras;
+
+import java.util.concurrent.TimeUnit;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class Wey_neta_no_me_abras {
+	WebDriver driver;
+	String  baseURL;
+
+	@Before
+	public void setUp() throws Exception 
+	{
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dextr\\OneDrive\\Documentos\\SELENIUM\\webdriver\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get("https://www.xvideos.com");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+	}
+		
+		@Test
+		public void test() throws InterruptedException {
+			driver.get("https://www.xvideos.com");
+			driver.findElement(By.xpath("//*[@id=\"nav\"]/nav/div[1]/ul/li[14]/a")).click();
+			Thread.sleep(3000);
+			System.out.println("todas las categorias");
+			((JavascriptExecutor)driver).executeScript("scroll(0,500)");
+			System.out.println("Scroll down");
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("/html/body/div/div[4]/ul[2]/li[116]/a/b")).click();
+			Thread.sleep(3000);
+			System.out.println("Asiaticas");
+			driver.findElement(By.xpath("/html/body/div/div[4]/div[1]/div[3]/ul/li[2]/a")).click();
+			Thread.sleep(3000);
+			System.out.println("filtras");
+			driver.findElement(By.xpath("//*[@id=\"search-page-filters-block\"]/div[3]/ul/li[3]/a")).click();
+			Thread.sleep(3000);
+			System.out.println("videos cortos");
+			((JavascriptExecutor)driver).executeScript("scroll(0,500)");
+			System.out.println("Scroll down 2");
+			driver.findElement(By.id("pic_22183121")).click();
+			Thread.sleep(3000);
+			System.out.println("video de la culona");
+			((JavascriptExecutor)driver).executeScript("scroll(0,200)");
+			System.out.println("Scroll down 2");
+			driver.findElement(By.xpath("//*[@id=\"video-actions\"]/ul/li[2]/a")).click();
+			Thread.sleep(3000);
+			System.out.println("descargar video de la culona");
+			driver.findElement(By.xpath("/html/body/div/div[4]/div[4]/div[2]/div[2]/h4/a")).click();
+			Thread.sleep(3000);
+			System.out.println("iniciar sesion");			
+			driver.findElement(By.id("signin-form_login")).click();
+			Thread.sleep(3000);
+			System.out.println("click en usuario");
+			driver.findElement(By.id("signin-form_login")).sendKeys("instagram.testingleongto@outlook.com");
+			Thread.sleep(3000);
+			System.out.println("manda usuario");
+			driver.findElement(By.id("signin-form_password")).sendKeys("papas12345!");
+			Thread.sleep(3000);
+			System.out.println("click en password");
+			driver.findElement(By.xpath("//*[@id=\"signin-form\"]/div[4]/div/button")).click();
+			Thread.sleep(3000);
+			System.out.println("inicia sesion");
+			((JavascriptExecutor)driver).executeScript("scroll(0,200)");
+			driver.findElement(By.xpath("/html/body/div[1]/div[4]/div[4]/div[1]/ul/li[2]/a")).click();
+			Thread.sleep(3000);
+			System.out.println("ora si a descargar unas nalgas en mp4");
+			driver.findElement(By.xpath("/html/body/div[1]/div[4]/div[4]/div[2]/div[2]/p/a[1]/strong")).click();
+			Thread.sleep(3000);
+			System.out.println("ora si a descargar unas nalgas en mp4 en alta calidad weeeeee");
+			System.out.println("se cierra todo el desmadre :D");
+			Thread.sleep(8000);
+			driver.quit();
+	}
+}
