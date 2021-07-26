@@ -1,0 +1,120 @@
+import java.util.concurrent.TimeUnit;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class secci10 {
+
+		private WebDriver driver;
+    String baseURL = "https://courses.letskodeit.com/practice";
+  	By BMWRadiobtn = By.id("bmwradio");
+ 		By BenzRadiobtn = By.id("benzradio");
+ 		By HondaRadiobtn = By.id("hondaradio");
+		By btnlisto = By.xpath("/html/body/div[1]/div[1]/div/div[1]/div/div[1]/div[3]/div/div/div/div[6]/div/div/div/div[1]/div/form/div[1]/div[2]/div/div/div[1]/div/div[2]/div/div[3]/button");
+		By btn1fecha = By.xpath("/html/body/div[1]/div[1]/div/div[1]/div/div[1]/div[3]/div/div/div/div[6]/div/div/div/div[1]/div/form/div[1]/div[2]/div/div/div[1]/div/div[2]/div/div[2]/div[2]/div[1]/table/tbody/tr[3]/td[7]/button");
+		By btn2fecha = By.xpath("//button[@class='uitk-date-picker-day uitk-new-date-picker-day'][contains(@data-day,'22')]");// el numero es el dia que se busca
+		
+	
+		@Before
+		public void setup() {
+			System.setProperty("webdriver.gecko.driver", "C:\\\\Users\\\\ch_ly\\\\Documents\\\\selenium\\\\webdrivers\\\\geckodriver.exe");
+			driver = new FirefoxDriver();
+			
+		}
+		
+	    // section 13 to 16, interacting with the boxes, types of buttons and screens of windows
+		@Test
+		public  void test() throws InterruptedException {
+      driver.manage().window().maximize();
+      driver.get(baseURL);
+      
+			driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
+			driver.findElement(BMWRadiobtn).click();
+			Thread.sleep(1000);
+			driver.findElement(BenzRadiobtn).click();
+			Thread.sleep(1000);
+			driver.findElement(HondaRadiobtn).click();
+			Thread.sleep(1000);
+		}
+    
+		@Test
+		public  void test2() throws InterruptedException {
+      driver.manage().window().maximize();
+      driver.get(baseURL);
+    
+			WebElement element = driver.findElement(By.id("carselect"));
+			Select sel = new Select(element);
+			
+			Thread.sleep(2000);
+			System.out.println("Select Honda");
+			sel.selectByIndex(2);
+				
+			Thread.sleep(2000);
+			System.out.println("Select Benz");
+			sel.selectByValue("benz");
+			
+			Thread.sleep(2000); 
+			System.out.println("Select BMW");
+			sel.selectByVisibleText("BMW");
+			Thread.sleep(1000);
+		}
+    
+		@Test
+		public  void test3() throws InterruptedException {
+      driver.manage().window().maximize();
+      driver.get(baseURL);
+    
+			WebElement mulsel = driver.findElement(By.id("multiple-select-example"));
+			Select sel = new Select(mulsel);
+			
+			sel.selectByVisibleText("Apple");
+			Thread.sleep(1000);
+			sel.selectByValue("orange");
+			Thread.sleep(1000);
+			sel.selectByIndex(2);
+			Thread.sleep(1000);
+			sel.deselectAll();
+			sel.selectByValue("orange");
+			Thread.sleep(1000);
+		}
+    
+		@Test
+		public  void test4() throws InterruptedException {
+			//interact with windows pages
+      driver.manage().window().maximize();
+			driver.get("https://www.youtube.com/");
+      
+      
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.navigate().back();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.navigate().forward();
+    }
+		
+		@Test
+		public void test5() throws InterruptedException{
+			//select on a calendar
+      driver.manage().window().maximize();
+      driver.get("https://www.expedia.mx/");		
+      
+      
+      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+			driver.findElement(By.xpath("//*[@id=\"d1-btn\"]")).click();
+			driver.findElement(btn1fecha).click();
+			Thread.sleep(1000);
+			driver.findElement(btn2fecha).click();
+			Thread.sleep(1000);
+			driver.findElement(btnlisto).click();
+		}
+		
+	
+		@After
+		public void TearDown() {
+			driver.quit();
+		}
+}
